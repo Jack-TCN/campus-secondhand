@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
@@ -9,8 +8,8 @@ const PORT = 3000;
 // 中间件配置
 app.use(cors());
 // 增加请求体大小限制，支持图片上传
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({ extended: true, limit: '100mb' }));
 
 // 静态文件服务（为前端文件提供服务）
 app.use(express.static(path.join(__dirname, '../frontend')));
